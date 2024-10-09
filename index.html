@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Calculadora</title>
+</head>
+<style>
+    .contenedor{
+    padding: 20px;
+    margin-top: 50px;
+    width: 840px;
+    height: 600px;
+    background-color: #d6d6d6;
+    border-radius: 8px;
+    box-shadow: 8px 8px 8px gray;
+    }
+    h3{
+        text-align: center;
+        color: white;
+        background-color: #808b96;
+        border-radius: 8px;
+    }
+    input{
+        width: 300px;
+        height: 40px;
+        margin-left: 40px;
+    }
+    button{
+        width: 150px;
+        height: 50px;
+        border: none;
+        background-color: #2c3e50;
+        color: white;
+        border-radius: 6px;
+        margin-left: 20px;
+        /*box-shadow: 10px 10px 20px #34495e;*/
+    }
+    #boton{
+        width: 300px;
+    }
+    #resultado{
+        margin-left: 230px;
+    }
+</style>
+<body>
+    <div class="container contenedor">
+        <div class="row">
+            <div class="col">
+                <h3>Calculadora</h3>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <input type="number" id="numero1" placeholder="Ingresa un numero">
+            </div>
+            <div class="col">
+                <input type="number" id="numero2" placeholder="Ingresa otro numero">
+            </div>
+            <br><br><br>
+            <div class="row">
+                <div class="col">
+                    <button onclick="resultadoSuma()"><b>+</b></button>
+                </div>
+                <div class="col">
+                    <button onclick="resultadoResta()"><b>-</b></button>
+                </div>
+                <div class="col">
+                    <button onclick="resultadoMultiplicacion()"><b>x</b></button>
+                </div>
+                <div class="col">
+                    <button onclick="resultadoDivision()"><b>/</b></button>
+                </div>
+            </div>
+            <br><br><br>
+            <div class="row">
+                <div class="col">
+                    <button onclick="resultadoRaiz()" id="boton"><b>Raiz</b></button>
+                </div>
+                <div class="col">
+                    <button onclick="resultadoPotencia()" id="boton"><b>Potencia</b></button>
+                </div>
+            </div>
+            <br><br><br>
+            <div class="row">
+                <div class="col">
+                    <button onclick="resultadoAbsoluto()" id="boton"><b>Absoluto</b></button>
+                </div>
+                <div class="col">
+                    <button id="boton" onclick="resultadoRandom()"><b>Random</b></button>
+                </div>
+            </div>
+            <br><br><br>
+            <div class="row">
+                <div class="col">
+                    <h3>Resultado</h3>
+                </div>
+            </div>
+            <br><br><br>
+            <div class="row">
+                <div class="col">
+                    <input type="number"  id="resultado">
+                </div>
+            </div>
+            <br><br><br>
+            <div class="row">
+                <div class="col">
+                    <button onclick="redondear()">Round</button>
+                </div>
+                <div class="col">
+                    <button onclick="floor()">Floor</button>
+                </div>
+                <div class="col">
+                    <button onclick="ceil()">ceil</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+
+    //Funcion para sumar
+    function suma(num1,num2){
+        resultado = +num1 + +num2;
+        return resultado;
+    }
+
+    function resultadoSuma(){
+    let n1 = document.getElementById("numero1").value;
+    let n2 = document.getElementById("numero2").value;
+    let eR = document.getElementById("resultado");
+
+    let eSuma = suma(n1, n2);
+    eR.value = eSuma;
+    }
+
+    function resta(num1,num2){
+        resultado = -num1 - -num2;
+        return resultado;
+    }
+
+    function resultadoResta(){
+        let n1 = document.getElementById("numero1").value;
+        let n2 = document.getElementById("numero2").value;
+        let eR = document.getElementById("resultado");
+
+        let eResta = resta(n1,n2);
+        eR.value = eResta;
+    }
+
+    function multiplicacion(num1,num2){
+        resultado = num1 * num2;
+        return resultado;
+    }
+
+    function resultadoMultiplicacion(){
+        let n1 = document.getElementById("numero1").value;
+        let n2 = document.getElementById("numero2").value;
+        let eR = document.getElementById("resultado");
+
+        let eMult = multiplicacion(n1,n2);
+        eR.value = eMult;
+    }
+
+    function division(num1,num2){
+        resultado = num1 / num2;
+        return resultado;
+    }
+
+    function resultadoDivision(){
+        let n1 = document.getElementById("numero1").value;
+        let n2 = document.getElementById("numero2").value;
+        let eR = document.getElementById("resultado");
+
+        let eDiv = division(n1,n2);
+        eR.value = eDiv;
+    }
+
+    function raizCuadrada(num) {
+    if (num < 0) {
+        return "Error: Número negativo";
+    }
+    return Math.sqrt(num);
+    }
+
+    function resultadoRaiz(){
+    let n1 = document.getElementById("numero1").value;
+    let eR = document.getElementById("resultado");
+
+    let eRaiz = raizCuadrada(n1);
+    eR.value = eRaiz;
+    }
+
+    function potencia(base, exponente) {
+    return Math.pow(base, exponente); 
+    }
+
+    function resultadoPotencia(){
+    let n1 = document.getElementById("numero1").value;
+    let n2 = document.getElementById("numero2").value;
+    let eR = document.getElementById("resultado");
+
+    let ePotencia = potencia(n1, n2);
+    eR.value = ePotencia;
+    }
+
+    function valorAbsoluto(num) {
+    return Math.abs(num);
+    }
+
+    function resultadoAbsoluto(){
+    let n1 = document.getElementById("numero1").value;
+    let eR = document.getElementById("resultado");
+
+    let eAbsoluto = valorAbsoluto(n1);
+    eR.value = eAbsoluto;
+    }
+
+    function numeroAleatorio(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function resultadoRandom(){
+    let n1 = parseInt(document.getElementById("numero1").value);
+    let n2 = parseInt(document.getElementById("numero2").value);
+    let eR = document.getElementById("resultado");
+
+    let eRandom = numeroAleatorio(n1, n2);
+    eR.value = eRandom;
+
+    }
+
+    function redondear(){
+        let redondear = document.getElementById("resultado").value;
+        let calculo = Math.round(redondear);
+        document.getElementById("resultado").value = calculo; 
+    }
+
+    function floor(){
+        let floor = document.getElementById("resultado").value;
+        let calculo = Math.floor(floor);
+        document.getElementById("resultado").value = calculo;
+    }
+
+    function ceil(){
+        let ceil = document.getElementById("resultado").value;
+        let calculo = Math.ceil(ceil);
+        document.getElementById("resultado").value = calculo;
+    }
+</script>
+</html>
